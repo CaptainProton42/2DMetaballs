@@ -103,7 +103,7 @@ Using `CPUParticles2D` to create many metaballs.
 {{ site.endCaption }}
 {{ site.endFigure }}
 
-Right now, the particles just instantly disappear after exceeding their lifetime. This does not look very convincing, especially if we want to emulate the look of soft flames. We could just change the size of the particles over time but as far as I know, Godot doesn't support this feature. Instead, I'm using a different trick: By lowering the alpha of the entire texture, we "pull" it below the threshold. This results in the metaball shrinking:
+Right now, the particles just instantly disappear after exceeding their lifetime. This does not look very convincing, especially if we want to emulate the look of soft flames. We could just change the size of the particles over time ~~but as far as I know, Godot doesn't support this feature~~. ***I stand corrected:** You can use the `scale_amount_curve` property!* Instead, I'm using a different trick: By lowering the alpha of the entire texture, we "pull" it below the threshold. This results in the metaball shrinking:
 
 {{ site.beginFigure }}
 <img src="assets/modulate_alpha.gif" width="75%">
