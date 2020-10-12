@@ -1,4 +1,4 @@
-baseurl: "2DMetaballs" # the subpath of your site, e.g. /blog
+baseurl: /2DMetaballs # the subpath of your site, e.g. /blog
 
 # Build settings
 plugins:
