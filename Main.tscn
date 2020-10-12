@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://assets/textures/gradient_linear.png" type="Texture" id=1]
+[ext_resource path="res://scripts/MouseInput.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/fire_gradient.png" type="Texture" id=3]
+
+[sub_resource type="Gradient" id=1]
+offsets = PoolRealArray( 0, 0.789552, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="Shader" id=2]
+code = "shader_type canvas_item;
+
+uniform sampler2D gradient;
+
+void fragment() {
+	float b = texture(TEXTURE, UV).r;
+	COLOR = texture(gradient, vec2(b, 0.0f));
+}"
+
+[sub_resource type="ShaderMaterial" id=3]
+shader = SubResource( 2 )
+shader_param/gradient = ExtResource( 3 )
+
+[sub_resource type="ViewportTexture" id=4]
+viewport_path = NodePath("Viewport")
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 640, 360 )
+
+[node name="Main" type="Node2D"]
+
+[node name="Viewport" type="Viewport" parent="."]
+size = Vector2( 1280, 720 )
+render_target_v_flip = true
+
+[node name="ColorRect" type="ColorRect" parent="Viewport"]
+margin_right = 1280.0
+margin_bottom = 720.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Viewport"]
+position = Vector2( 640, 360 )
+emitting = false
+amount = 128
+lifetime = 2.0
+texture = ExtResource( 1 )
+emission_shape = 4
+emission_points = PoolVector2Array( 0, 0 )
+emission_normals = PoolVector2Array( 0, 1 )
+emission_colors = PoolColorArray(  )
+spread = 20.0
+gravity = Vector2( 0, 0 )
+initial_velocity = 50.0
+tangential_accel = 10.0
+tangential_accel_random = 0.2
+scale_amount = 0.5
+color_ramp = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+material = SubResource( 3 )
+position = Vector2( 640, 360 )
+texture = SubResource( 4 )
+
+[node name="MouseInput" type="Area2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MouseInput"]
+position = Vector2( 640, 360 )
+shape = SubResource( 5 )
+
+[node name="Label" type="Label" parent="."]
+margin_right = 160.0
+margin_bottom = 14.0
+rect_scale = Vector2( 2, 2 )
+text = "Click and drag to cast fire"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="input_event" from="MouseInput" to="MouseInput" method="_on_input_event"]
