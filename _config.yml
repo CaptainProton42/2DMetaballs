@@ -1,5 +1,3 @@
-baseurl: /2DMetaballs # the subpath of your site, e.g. /blog
-
 # Build settings
 plugins:
   - jekyll-remote-theme
