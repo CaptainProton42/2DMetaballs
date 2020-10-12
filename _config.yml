@@ -1,10 +1,9 @@
 baseurl: "" # the subpath of your site, e.g. /blog
 
 # Build settings
-remote_theme: captainproton42/protontheme
 plugins:
-  - jekyll-feed
   - jekyll-remote-theme
+remote_theme: captainproton42/protontheme
 
 beginInfoBox: "<div markdown='1' class='infobox'>"
 endInfoBox: "</div>"
