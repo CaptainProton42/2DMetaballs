@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /
-title: Easy 2D Metaballs through Textures
+title: Create 2D Metaballs easily with Textures
 
 # protontheme frontmatter
 preview-html:
