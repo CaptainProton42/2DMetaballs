@@ -16,6 +16,8 @@ theme:
   red-flames
 usemath:
   true
+disable-navbar:
+  true
 ---
 
 ## Metaballs
