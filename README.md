@@ -9,7 +9,7 @@ preview-html:
 preview-description:
   Particle-driven demonstration using the implementation of 2D metaballs presented here in the Godot Engine. Click and drag to cast fire. You can download all project files by clicking the button below; they are under the MIT license.
 gh-repo:
-  captainproton42/protontheme
+  captainproton42/2DMetaballs
 gh-norelease:
   true
 theme:
